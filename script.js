@@ -1,10 +1,17 @@
 console.log('hello');
 
+const choiceOptions = ['rock', 'paper', 'scissors'];
+
 function getComputerChoice() {
-  const choiceOptions = ['rock', 'paper', 'scissors'];
   const randomIndex = Math.floor(Math.random() * choiceOptions.length);
 
   return choiceOptions[randomIndex];
 }
 
 console.log(getComputerChoice());
+
+function getHumanChoice() {
+  return prompt('Rock, Paper, Scissors?', '');
+}
+
+console.log(getHumanChoice());
