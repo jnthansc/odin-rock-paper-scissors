@@ -10,10 +10,33 @@ function getComputerChoice() {
   return choiceOptions[randomIndex];
 }
 
-console.log(getComputerChoice());
-
 function getHumanChoice() {
   return prompt('Rock, Paper, Scissors?', '');
 }
 
-console.log(getHumanChoice());
+function playRound(humanChoice, computerChoice) {
+  humanChoice = humanChoice.toLowerCase();
+
+  let winnerAnnouncement = '';
+
+  if (humanChoice === computerChoice) {
+    winnerAnnouncement = "It's a tie! Try again.";
+  } else if (
+    (humanChoice === 'rock' && computerChoice == 'scissors') ||
+    (humanChoice === 'paper' && computerChoice == 'rock') ||
+    (humanChoice === 'scissors' && computerChoice == 'paper')
+  ) {
+    humanScore += 1;
+    winnerAnnouncement = `You win! ${humanChoice} beats ${computerChoice}`;
+  } else {
+    computerScore += 1;
+    winnerAnnouncement = `You lose! ${computerChoice} beats ${humanChoice}`;
+  }
+
+  console.log(winnerAnnouncement);
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
