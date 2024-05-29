@@ -5,6 +5,11 @@ const choiceOptions = ['rock', 'paper', 'scissors'];
 let humanScore = 0;
 let computerScore = 0;
 
+function resetScores() {
+  humanScore = 0;
+  computerScore = 0;
+}
+
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * choiceOptions.length);
 
@@ -39,8 +44,10 @@ function playRound(humanChoice, computerChoice) {
 
   if (computerScore >= 5) {
     scoreboardContent = 'Computer won! You have been defeated!';
+    resetScores();
   } else if (humanScore >= 5) {
     scoreboardContent = 'You won! Congratulations!';
+    resetScores();
   } else {
     scoreboardContent = `You: ${humanScore} | Computer: ${computerScore}`;
   }
