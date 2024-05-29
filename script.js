@@ -1,4 +1,5 @@
 const resultDiv = document.querySelector('.results');
+const scoreboard = document.querySelector('.scoreboard');
 
 const choiceOptions = ['rock', 'paper', 'scissors'];
 let humanScore = 0;
@@ -33,6 +34,7 @@ function playRound(humanChoice, computerChoice) {
   roundResultParagaph.textContent = roundResultAnnouncement;
 
   resultDiv.appendChild(roundResultParagaph);
+  scoreboard.innerHTML = `You: ${humanScore} | Computer: ${computerScore}`;
 }
 
 const buttons = document.querySelectorAll('button');
