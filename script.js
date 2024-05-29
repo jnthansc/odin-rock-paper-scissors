@@ -1,3 +1,5 @@
+const resultDiv = document.querySelector('.results');
+
 const choiceOptions = ['rock', 'paper', 'scissors'];
 let humanScore = 0;
 let computerScore = 0;
@@ -11,21 +13,35 @@ function getComputerChoice() {
 function playRound(humanChoice, computerChoice) {
   humanChoice = humanChoice.toLowerCase();
 
-  let winnerAnnouncement = '';
+  let roundResultAnnouncement = '';
 
   if (humanChoice === computerChoice) {
-    winnerAnnouncement = "It's a tie! Try again.";
+    roundResultAnnouncement = "It's a tie! Try again.";
   } else if (
     (humanChoice === 'rock' && computerChoice == 'scissors') ||
     (humanChoice === 'paper' && computerChoice == 'rock') ||
     (humanChoice === 'scissors' && computerChoice == 'paper')
   ) {
     humanScore += 1;
-    winnerAnnouncement = `You win! ${humanChoice} beats ${computerChoice}`;
+    roundResultAnnouncement = `You win! ${humanChoice} beats ${computerChoice}`;
   } else {
     computerScore += 1;
-    winnerAnnouncement = `You lose! ${computerChoice} beats ${humanChoice}`;
+    roundResultAnnouncement = `You lose! ${computerChoice} beats ${humanChoice}`;
   }
 
-  console.log(winnerAnnouncement);
+  const roundResultParagaph = document.createElement('p');
+  roundResultParagaph.textContent = roundResultAnnouncement;
+
+  resultDiv.appendChild(roundResultParagaph);
 }
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+  button.addEventListener('click', (event) => {
+    const id = button.id;
+    const computerChoice = getComputerChoice();
+
+    playRound(id, computerChoice);
+  });
+});
