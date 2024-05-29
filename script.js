@@ -34,7 +34,18 @@ function playRound(humanChoice, computerChoice) {
   roundResultParagaph.textContent = roundResultAnnouncement;
 
   resultDiv.appendChild(roundResultParagaph);
-  scoreboard.innerHTML = `You: ${humanScore} | Computer: ${computerScore}`;
+
+  let scoreboardContent = '';
+
+  if (computerScore >= 5) {
+    scoreboardContent = 'Computer won! You have been defeated!';
+  } else if (humanScore >= 5) {
+    scoreboardContent = 'You won! Congratulations!';
+  } else {
+    scoreboardContent = `You: ${humanScore} | Computer: ${computerScore}`;
+  }
+
+  scoreboard.innerHTML = scoreboardContent;
 }
 
 const buttons = document.querySelectorAll('button');
